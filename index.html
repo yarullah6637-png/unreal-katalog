@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6d5dfc">
+  <title>UN REAL · Güncel Modeller</title>
+  <meta name="description" content="UN REAL güncel modeller kataloğu. Ürünleri seçin, siparişinizi WhatsApp ile gönderin.">
+  <style>
+    :root{--bg:#f6f5fb;--panel:#fff;--text:#211f2b;--muted:#777486;--line:#e7e4ef;--primary:#6d5dfc;--soft:#efedff;--success:#16845b;--danger:#d94a59;--shadow:0 10px 30px rgba(38,31,70,.08)}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    body{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+    button,input,select,textarea{font:inherit;color:inherit}
+    button{cursor:pointer}
+    .app{max-width:1100px;margin:0 auto;padding:16px 16px 0}
+    .hero{padding:10px 4px 6px}
+    .hero small{font-weight:800;letter-spacing:.18em;color:var(--primary);font-size:12px}
+    .hero h1{margin:6px 0 8px;font-size:30px;letter-spacing:-.02em}
+    .hero p{margin:0;font-size:15px;color:var(--muted);line-height:1.5;max-width:560px}
+    .hero .meta{margin-top:10px;font-size:13px;color:var(--muted);font-weight:600}
+    .tools{position:sticky;top:0;z-index:5;background:rgba(246,245,251,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);margin:10px -16px 0;padding:12px 16px 10px;border-bottom:1px solid transparent}
+    .tools.stuck{border-bottom-color:var(--line)}
+    .tool-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+    .tool-row #search{grid-column:1/-1}
+    @media(min-width:640px){.tool-row{grid-template-columns:1fr auto auto}.tool-row #search{grid-column:auto}}
+    .tools input,.tools select{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:13px 14px;outline:none;font-size:16px;min-width:0}
+    .tools input{width:100%}
+    .tools select{font-size:14px;font-weight:700;padding:13px 10px;width:100%}
+    @media(min-width:640px){.tools select{width:auto}}
+    .tools input:focus{border-color:#b5adff;box-shadow:0 0 0 4px rgba(109,93,252,.1)}
+    .view-toggle{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:3px}
+    .view-toggle button{border:0;background:transparent;border-radius:11px;width:40px;height:40px;font-size:17px;color:var(--muted)}
+    .view-toggle button.on{background:var(--soft);color:var(--primary)}
+    #cat{display:none}
+    .chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 2px;scrollbar-width:none}
+    .chips::-webkit-scrollbar{display:none}
+    .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:700;white-space:nowrap}
+    .chip.on{background:var(--text);border-color:var(--text);color:#fff}
+    .count{color:var(--muted);font-size:13px;margin:14px 2px 4px}
+    .cat-title{font-size:22px;font-weight:800;margin:30px 2px 14px;display:flex;align-items:baseline;gap:10px;letter-spacing:-.01em}
+    .cat-title span{font-size:14px;color:var(--muted);font-weight:600}
+    .grid{display:grid;grid-template-columns:1fr;gap:22px}
+    body.compact .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    @media(min-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))} body.compact .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(min-width:980px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))} body.compact .grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+    .card{background:var(--panel);border-radius:22px;overflow:hidden;box-shadow:0 8px 28px rgba(38,31,70,.07);display:flex;flex-direction:column;border:2px solid transparent;transition:border-color .2s}
+    .card.in-cart{border-color:var(--primary)}
+    .gallery{position:relative;aspect-ratio:4/5;background:#eceaf3}
+    .slides{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .slides::-webkit-scrollbar{display:none}
+    .slide{flex:0 0 100%;height:100%;scroll-snap-align:start;border:0;padding:0;background:transparent;display:block}
+    .slide img{width:100%;height:100%;object-fit:cover;display:block}
+    .dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+    .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 3px rgba(0,0,0,.25)}
+    .dots i.on{background:#fff;width:18px;border-radius:4px}
+    .new{position:absolute;left:12px;top:12px;background:#16845b;color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:7px 11px;letter-spacing:.02em}
+    .zoom{position:absolute;right:12px;top:12px;border:0;background:rgba(255,255,255,.9);border-radius:999px;width:38px;height:38px;font-size:16px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+    .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .code{font-weight:800;font-size:22px;letter-spacing:-.01em}
+    .cat{font-size:12px;font-weight:700;color:var(--primary);background:var(--soft);border-radius:999px;padding:5px 10px;white-space:nowrap}
+    .desc{font-size:15px;color:var(--text);line-height:1.4}
+    .line{font-size:14px;color:var(--muted);line-height:1.45}
+    .pricebox{margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
+    .pack-price{font-size:22px;font-weight:800;color:var(--success);line-height:1.1}
+    .pack-price small{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:3px}
+    .price{font-size:13px;color:var(--muted);text-align:right;line-height:1.45}
+    .price b{color:var(--text)}
+    .act{margin-top:12px}
+    .add{width:100%;border:0;background:var(--primary);color:#fff;border-radius:14px;height:50px;font-weight:800;font-size:16px}
+    .stepper{display:grid;grid-template-columns:54px 1fr 54px;align-items:center;background:var(--soft);border-radius:14px;overflow:hidden;height:50px}
+    .stepper button{border:0;background:transparent;color:var(--primary);font-size:26px;font-weight:700;height:50px}
+    .stepper span{text-align:center;font-size:14px;font-weight:800;color:var(--primary);line-height:1.25}
+    body.compact .body{padding:11px 12px 12px;gap:4px}
+    body.compact .code{font-size:17px}
+    body.compact .desc{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    body.compact .line{font-size:12px}
+    body.compact .cat{display:none}
+    body.compact .pricebox{flex-direction:column;align-items:flex-start;gap:2px;padding-top:8px}
+    body.compact .pack-price{font-size:17px}
+    body.compact .price{text-align:left;font-size:12px}
+    body.compact .add,body.compact .stepper,body.compact .stepper button{height:44px;font-size:14px}
+    body.compact .stepper{grid-template-columns:40px 1fr 40px}
+    body.compact .stepper span{font-size:12px}
+    body.compact .new{font-size:10px;padding:5px 8px;left:8px;top:8px}
+    body.compact .zoom{display:none}
+    .empty{background:#fff;border:1px dashed #d4d0df;border-radius:18px;padding:34px 18px;text-align:center;color:var(--muted)}
+    .cartbar{position:fixed;z-index:10;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:min(720px,calc(100% - 24px));background:#262330;color:#fff;border-radius:20px;padding:12px 12px 12px 18px;display:none;align-items:center;gap:10px;box-shadow:0 16px 38px rgba(0,0,0,.28)}
+    .cartbar.show{display:flex}
+    .cartbar .sum{margin-right:auto;font-size:13px;line-height:1.4}
+    .cartbar .sum b{font-size:18px}
+    .cartbar button{border:0;background:#25d366;color:#fff;border-radius:14px;padding:14px 18px;font-weight:800;font-size:15px}
+    dialog{border:0;padding:0;border-radius:22px;width:min(640px,calc(100% - 16px));max-height:92dvh;box-shadow:0 24px 80px rgba(25,20,50,.3)}
+    dialog::backdrop{background:rgba(25,20,40,.55)}
+    .mhead{position:sticky;top:0;background:#fff;z-index:2;padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+    .mhead h3{margin:0;font-size:18px}
+    .close{border:0;background:#efedf4;border-radius:11px;width:36px;height:36px;font-size:20px}
+    .mbody{padding:14px 16px}
+    .row{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+    .row img{width:56px;height:56px;border-radius:10px;object-fit:cover;background:#eceaf3}
+    .row .t{font-size:12px;color:var(--muted);line-height:1.4}
+    .row .t b{color:var(--text);font-size:14px}
+    .row .stepper{margin:0;width:140px;grid-template-columns:38px 1fr 38px;height:46px}
+    .row .stepper button{height:46px;font-size:22px}
+    .row .stepper span{font-size:11px}
+    .totals{background:#f8f7fb;border-radius:14px;padding:12px;margin:14px 0;font-size:13px;line-height:1.6}
+    .totals b{font-size:18px;color:var(--success)}
+    label{display:block;font-size:12px;font-weight:800;margin:10px 0 6px}
+    .mbody input,.mbody textarea{width:100%;border:1px solid var(--line);background:#fbfafe;border-radius:12px;padding:11px 12px;outline:none}
+    .send{width:100%;margin-top:14px;border:0;background:#25d366;color:#fff;border-radius:14px;padding:15px;font-weight:900;font-size:15px}
+    .hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.45;text-align:center}
+    .clear{border:0;background:none;color:var(--danger);font-weight:800;font-size:12px;margin-top:6px}
+    .viewer img{width:100%;display:block;border-radius:16px;background:#eceaf3;margin-bottom:12px}
+    .viewer .line{font-size:15px}
+    .status{padding:40px 10px;text-align:center;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <small>UN REAL</small>
+      <h1>Güncel Modeller</h1>
+      <p>Beğendiğiniz modelleri sepete ekleyin, siparişiniz tek dokunuşla WhatsApp'tan bize gelsin.</p>
+      <div class="meta" id="meta"></div>
+    </section>
+
+    <div class="tools" id="tools">
+      <div class="tool-row">
+        <input id="search" type="search" placeholder="Kod, model, renk veya beden ara…" autocomplete="off">
+        <select id="sort" aria-label="Sıralama">
+          <option value="category">Sırala: Kategori</option>
+          <option value="new">Sırala: Yeni gelenler</option>
+          <option value="price_asc">Sırala: Ucuzdan pahalıya</option>
+          <option value="price_desc">Sırala: Pahalıdan ucuza</option>
+          <option value="code">Sırala: Ürün kodu</option>
+        </select>
+        <div class="view-toggle" role="group" aria-label="Görünüm">
+          <button type="button" data-viewmode="large" aria-label="Büyük fotoğraflar">▢</button>
+          <button type="button" data-viewmode="compact" aria-label="Küçük fotoğraflar">▦</button>
+        </div>
+      </div>
+      <select id="cat" aria-label="Kategori"><option value="">Tüm kategoriler</option></select>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="count" id="count"></div>
+    <div id="list"><div class="status">Katalog yükleniyor…</div></div>
+  </main>
+
+  <div class="cartbar" id="cartbar">
+    <div class="sum" id="cartsum"></div>
+    <button id="openCart">Sepeti Gör →</button>
+  </div>
+
+  <dialog id="cartDialog">
+    <div class="mhead"><h3>Sepetim</h3><button class="close" data-close>×</button></div>
+    <div class="mbody">
+      <div id="cartRows"></div>
+      <div class="totals" id="cartTotals"></div>
+      <label for="custName">Adınız / Firma adınız *</label>
+      <input id="custName" maxlength="80" autocomplete="name" placeholder="Örn. Ayşe Yılmaz – Yılmaz Butik">
+      <label for="custNote">Not (isteğe bağlı)</label>
+      <textarea id="custNote" maxlength="300" rows="2" placeholder="Renk tercihi, teslimat vb."></textarea>
+      <button class="send" id="sendOrder">WhatsApp ile Siparişi Gönder</button>
+      <div class="hint">WhatsApp açılır ve sipariş listeniz hazır mesaj olarak gelir. Göndermek için WhatsApp'ta gönder tuşuna basın.</div>
+      <div style="text-align:center"><button class="clear" id="clearCart">Sepeti boşalt</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="viewDialog">
+    <div class="mhead"><h3 id="viewTitle"></h3><button class="close" data-close>×</button></div>
+    <div class="mbody viewer" id="viewBody"></div>
+  </dialog>
+
+<script>
+(() => {
+  "use strict";
+  const CART_KEY = "unrealKatalogSepet";
+  const NAME_KEY = "unrealKatalogMusteri";
+  const NEW_DAYS = 7;
+  const $ = id => document.getElementById(id);
+  let data = null, products = [], cart = {}, search = "", catFilter = "", sortMode = "category";
+
+  const norm = s => String(s || "").toLocaleLowerCase("tr-TR").trim();
+  const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+  const money = n => new Intl.NumberFormat("tr-TR",{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2}).format(Math.round(n*100)/100) + " ₺";
+  const fmtDate = iso => iso ? new Intl.DateTimeFormat("tr-TR",{day:"2-digit",month:"long",year:"numeric"}).format(new Date(iso)) : "";
+  const packPrice = p => p.price * p.pack;
+  function packLabel(n) {
+    // Türkçe ek: 6'lı, 10'lu, 12'li, 20'li, 3'lü …
+    const units = {1:"li",2:"li",3:"lü",4:"lü",5:"li",6:"lı",7:"li",8:"li",9:"lu"};
+    const tens = {10:"lu",20:"li",30:"lu",40:"lı",50:"li",60:"lı",70:"li",80:"li",90:"lı"};
+    const v = Number(n);
+    const suf = v % 10 ? units[v % 10] : v % 100 ? tens[v % 100] : (v % 1000 ? "lü" : "li");
+    return `${v}'${suf}`;
+  }
+
+
+  function isNew(p) {
+    if (!p.arrival) return false;
+    const days = (Date.now() - new Date(p.arrival + "T12:00:00").getTime()) / 86400000;
+    return days <= NEW_DAYS;
+  }
+
+  function loadCart() {
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY) || "{}") || {}; } catch (_) { cart = {}; }
+    for (const id of Object.keys(cart)) if (!products.some(p => p.id === id) || !(cart[id] > 0)) delete cart[id];
+    $("custName").value = (() => { try { return localStorage.getItem(NAME_KEY) || ""; } catch (_) { return ""; } })();
+  }
+  function saveCart() { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (_) {} }
+
+  function categoryOrder() { return data.categoryOrder || []; }
+  function catRank(name) {
+    const i = categoryOrder().findIndex(c => norm(c) === norm(name));
+    return i >= 0 ? i : 500;
+  }
+  const mainCat = p => p.cats[0] || "Diğer";
+
+  function visible() {
+    let list = products;
+    if (catFilter) list = list.filter(p => p.cats.some(c => norm(c) === norm(catFilter)));
+    if (search) {
+      const q = norm(search);
+      list = list.filter(p => norm([p.code, p.cats.join(" "), p.name, p.colors, p.sizes, p.tags].join(" ")).includes(q));
+    }
+    const byCode = (a,b) => String(a.code).localeCompare(String(b.code), "tr", {numeric:true});
+    list = [...list];
+    if (sortMode === "category") list.sort((a,b) => catRank(mainCat(a)) - catRank(mainCat(b)) || mainCat(a).localeCompare(mainCat(b),"tr") || (b.arrival||"").localeCompare(a.arrival||"") || byCode(a,b));
+    if (sortMode === "new") list.sort((a,b) => (b.arrival||"").localeCompare(a.arrival||"") || byCode(a,b));
+    if (sortMode === "price_asc") list.sort((a,b) => a.price - b.price || byCode(a,b));
+    if (sortMode === "price_desc") list.sort((a,b) => b.price - a.price || byCode(a,b));
+    if (sortMode === "code") list.sort(byCode);
+    return list;
+  }
+
+  function actHTML(p) {
+    const qty = cart[p.id] || 0;
+    return qty
+      ? `<div class="stepper"><button data-dec aria-label="Azalt">−</button><span>${qty} paket · ${qty*p.pack} adet</span><button data-inc aria-label="Artır">+</button></div>`
+      : `<button class="add" data-inc>Sepete Ekle</button>`;
+  }
+
+  function cardHTML(p) {
+    const qty = cart[p.id] || 0;
+    const info = [p.sizes && `Beden: ${esc(p.sizes)}`, p.colors && `Renk: ${esc(p.colors)}`].filter(Boolean).join(" · ");
+    return `<article class="card ${qty ? "in-cart" : ""}" data-id="${esc(p.id)}">
+      <div class="gallery">
+        <div class="slides">
+          ${p.photos.map((src, i) => `<button class="slide" data-view aria-label="${esc(p.code)} fotoğraf ${i+1}"><img src="${esc(src)}" alt="${esc(p.code)}" loading="lazy" decoding="async"></button>`).join("")}
+        </div>
+        ${isNew(p) ? `<span class="new">YENİ GELDİ</span>` : ""}
+        ${p.photos.length ? `<button class="zoom" data-view aria-label="Fotoğrafları büyüt">⤢</button>` : ""}
+        ${p.photos.length > 1 ? `<div class="dots">${p.photos.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>` : ""}
+      </div>
+      <div class="body">
+        <div class="top"><div class="code">${esc(p.code)}</div><span class="cat">${esc(p.cats.join(", ") || "Diğer")}</span></div>
+        ${p.name ? `<div class="desc">${esc(p.name)}</div>` : ""}
+        ${info ? `<div class="line">${info}</div>` : ""}
+        <div class="pricebox">
+          <div class="pack-price"><small>${packLabel(p.pack)} paket</small>${money(packPrice(p))}</div>
+          <div class="price">Adet fiyatı<br><b>${money(p.price)}</b></div>
+        </div>
+        <div class="act">${actHTML(p)}</div>
+      </div>
+    </article>`;
+  }
+
+  // Fotoğraf kaydırınca alttaki noktaları güncelle.
+  function bindGalleries(root) {
+    root.querySelectorAll(".slides").forEach(sl => {
+      const dots = sl.parentElement.querySelectorAll(".dots i");
+      if (dots.length < 2) return;
+      sl.addEventListener("scroll", () => {
+        const i = Math.round(sl.scrollLeft / sl.clientWidth);
+        dots.forEach((d, k) => d.classList.toggle("on", k === i));
+      }, {passive:true});
+    });
+  }
+
+  function render() {
+    const list = visible();
+    $("count").textContent = `${list.length} model`;
+    $("chips").innerHTML = [`<button class="chip ${catFilter ? "" : "on"}" data-cat="">Tümü</button>`]
+      .concat(data.categories.map(c => `<button class="chip ${norm(c) === norm(catFilter) ? "on" : ""}" data-cat="${esc(c)}">${esc(c)}</button>`)).join("");
+    if (!list.length) {
+      $("list").innerHTML = `<div class="empty">Aramanıza uygun model bulunamadı.</div>`;
+    } else if (sortMode === "category" && !search) {
+      const groups = [];
+      for (const p of list) {
+        const c = mainCat(p);
+        if (!groups.length || groups[groups.length-1].name !== c) groups.push({name:c, items:[]});
+        groups[groups.length-1].items.push(p);
+      }
+      $("list").innerHTML = groups.map(g => `<div class="cat-title">${esc(g.name)} <span>${g.items.length} model</span></div><div class="grid">${g.items.map(cardHTML).join("")}</div>`).join("");
+    } else {
+      $("list").innerHTML = `<div class="grid">${list.map(cardHTML).join("")}</div>`;
+    }
+    bindGalleries($("list"));
+    renderCartBar();
+  }
+
+  function cartLines() {
+    return Object.entries(cart).map(([id, qty]) => ({p: products.find(x => x.id === id), qty})).filter(l => l.p && l.qty > 0);
+  }
+  function cartTotals() {
+    const lines = cartLines();
+    return {
+      lines,
+      packs: lines.reduce((s,l) => s + l.qty, 0),
+      pieces: lines.reduce((s,l) => s + l.qty * l.p.pack, 0),
+      total: lines.reduce((s,l) => s + l.qty * packPrice(l.p), 0)
+    };
+  }
+
+  function renderCartBar() {
+    const t = cartTotals();
+    $("cartbar").classList.toggle("show", t.packs > 0);
+    $("cartsum").innerHTML = `${t.lines.length} model · ${t.packs} paket · ${t.pieces} adet<br><b>${money(t.total)}</b>`;
+  }
+
+  function renderCartDialog() {
+    const t = cartTotals();
+    if (!t.lines.length) { $("cartDialog").close(); return; }
+    $("cartRows").innerHTML = t.lines.map(({p, qty}) => `
+      <div class="row" data-id="${esc(p.id)}">
+        <img src="${esc(p.photos[0] || "")}" alt="">
+        <div class="t"><b>${esc(p.code)}</b><br>${packLabel(p.pack)} paket × ${money(packPrice(p))}<br><b>${money(qty * packPrice(p))}</b></div>
+        <div class="stepper"><button data-dec>−</button><span>${qty} paket<br>${qty*p.pack} adet</span><button data-inc>+</button></div>
+      </div>`).join("");
+    $("cartTotals").innerHTML = `${t.lines.length} model · ${t.packs} paket · ${t.pieces} adet<br>Toplam: <b>${money(t.total)}</b>`;
+  }
+
+  function change(id, delta) {
+    const next = Math.max(0, (cart[id] || 0) + delta);
+    if (next) cart[id] = next; else delete cart[id];
+    saveCart();
+    const card = [...document.querySelectorAll(".card")].find(c => c.dataset.id === id);
+    const p = products.find(x => x.id === id);
+    if (card && p) {
+      card.classList.toggle("in-cart", !!cart[id]);
+      card.querySelector(".act").innerHTML = actHTML(p);
+    }
+    renderCartBar();
+    if ($("cartDialog").open) renderCartDialog();
+  }
+
+  function orderMessage() {
+    const t = cartTotals();
+    const name = $("custName").value.trim();
+    const note = $("custNote").value.trim();
+    const clean = s => String(s || "").replace(/[*_~`]/g, "");
+    const blocks = t.lines.map(({p, qty}, i) => [
+      `*${i+1}) ${clean(p.code)}*${p.cats.length ? " · " + clean(p.cats.join(", ")) : ""}`,
+      `   ${qty} paket × ${packLabel(p.pack)} = ${qty*p.pack} adet`,
+      `   Adet fiyatı ${money(p.price)} → *${money(qty*packPrice(p))}*`
+    ].join("\n"));
+    return [
+      "🛒 *YENİ SİPARİŞ*",
+      `👤 ${clean(name)}`,
+      "",
+      blocks.join("\n\n"),
+      "",
+      "━━━━━━━━━━━━",
+      `📦 Toplam: ${t.packs} paket / ${t.pieces} adet`,
+      `💰 *TUTAR: ${money(t.total)}*`,
+      ...(note ? ["", `📝 Not: ${clean(note)}`] : []),
+      "",
+      `🗓 Katalog tarihi: ${fmtDate(data.updatedAt)}`
+    ].join("\n");
+  }
+
+  function sendOrder() {
+    const name = $("custName").value.trim();
+    if (!name) { $("custName").focus(); $("custName").style.borderColor = "var(--danger)"; return; }
+    try { localStorage.setItem(NAME_KEY, name); } catch (_) {}
+    const url = `https://wa.me/${data.whatsapp}?text=${encodeURIComponent(orderMessage())}`;
+    window.location.href = url;
+  }
+
+  function openViewer(p) {
+    $("viewTitle").textContent = p.code;
+    $("viewBody").innerHTML = p.photos.map(src => `<img src="${esc(src)}" alt="${esc(p.code)}">`).join("") +
+      `<div class="line">${esc([p.name, p.sizes && "Beden: " + p.sizes, p.colors && "Renk: " + p.colors].filter(Boolean).join(" · "))}</div>`;
+    $("viewDialog").showModal();
+  }
+
+  document.addEventListener("click", e => {
+    const close = e.target.closest("[data-close]");
+    if (close) return close.closest("dialog").close();
+    const holder = e.target.closest("[data-id]");
+    if (holder) {
+      const id = holder.dataset.id;
+      if (e.target.closest("[data-inc]")) return change(id, 1);
+      if (e.target.closest("[data-dec]")) return change(id, -1);
+      if (e.target.closest("[data-view]")) return openViewer(products.find(p => p.id === id));
+    }
+    const chip = e.target.closest("[data-cat]");
+    if (chip) { catFilter = chip.dataset.cat; $("cat").value = catFilter; render(); }
+  });
+  document.querySelectorAll("dialog").forEach(d => d.addEventListener("click", e => { if (e.target === d) d.close(); }));
+  const VIEW_KEY = "unrealKatalogGorunum";
+  function setViewMode(mode) {
+    document.body.classList.toggle("compact", mode === "compact");
+    document.querySelectorAll("[data-viewmode]").forEach(b => b.classList.toggle("on", b.dataset.viewmode === mode));
+    try { localStorage.setItem(VIEW_KEY, mode); } catch (_) {}
+  }
+  document.querySelectorAll("[data-viewmode]").forEach(b => b.addEventListener("click", () => setViewMode(b.dataset.viewmode)));
+  setViewMode((() => { try { return localStorage.getItem(VIEW_KEY) || "large"; } catch (_) { return "large"; } })());
+  window.addEventListener("scroll", () => $("tools").classList.toggle("stuck", window.scrollY > 120), {passive:true});
+  $("search").addEventListener("input", e => { search = e.target.value; render(); });
+  $("sort").addEventListener("change", e => { sortMode = e.target.value; render(); });
+  $("cat").addEventListener("change", e => { catFilter = e.target.value; render(); });
+  $("openCart").addEventListener("click", () => { renderCartDialog(); $("cartDialog").showModal(); });
+  $("sendOrder").addEventListener("click", sendOrder);
+  $("custName").addEventListener("input", e => e.target.style.borderColor = "");
+  $("clearCart").addEventListener("click", () => { if (confirm("Sepet boşaltılsın mı?")) { cart = {}; saveCart(); $("cartDialog").close(); render(); } });
+
+  async function init() {
+    try {
+      const res = await fetch(`katalog.json?t=${Date.now()}`, {cache:"no-store"});
+      if (!res.ok) throw new Error(res.status);
+      data = await res.json();
+      products = (data.products || []).filter(p => p.price > 0 && p.pack > 0);
+      data.categories = [...new Set(products.flatMap(p => p.cats))].sort((a,b) => catRank(a) - catRank(b) || a.localeCompare(b,"tr"));
+      $("cat").innerHTML = `<option value="">Tüm kategoriler</option>` + data.categories.map(c => `<option>${esc(c)}</option>`).join("");
+      $("meta").textContent = `${products.length} model · Güncelleme: ${fmtDate(data.updatedAt)}`;
+      loadCart();
+      render();
+    } catch (err) {
+      console.error(err);
+      $("list").innerHTML = `<div class="empty">Katalog şu an yüklenemedi. Lütfen biraz sonra tekrar deneyin.</div>`;
+    }
+  }
+  init();
+})();
+</script>
+</body>
+</html>
